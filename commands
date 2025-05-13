@@ -1,0 +1,8 @@
+Commands used: 
+
+pythooon -m venv .venv 
+source .venv/bin/activate 
+
+pip install fastapi[all] 
+
+uvicorn myapp:app
