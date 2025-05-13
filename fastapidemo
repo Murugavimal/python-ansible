@@ -1,5 +1,31 @@
 from fastapi import FastAPI
+from schema import userdata
+from random import randrange 
+
+
 app = FastAPI()
+
+data=[]
+
 @app.get("/welcome")
 def showWelcome():
-    return {'message', "Welcome to Fast API !!!"}
+    return {"message", "Welcome to Fast  API !!!"}
+
+
+@app.get("/login")
+def loginpage():
+    return{"Welcome to login!! "}
+
+#get function which is used to load the userdata 
+@app.get("/userdata")
+def userdatafun():
+    return{"Data": data}
+
+
+@app.post("/userdata")
+def userdatapost(user:userdata):
+    singleuser= {}
+    singleuser=(user.model_dump())
+    singleuser["ID"] = randrange(0,10000)
+    data.append(singleuser)
+    return {"User details" : data}
