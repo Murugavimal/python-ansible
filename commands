@@ -79,3 +79,13 @@ ansible -i inventory.ini -m ping all
     
     ansible-playbook -i ../inventory.ini vault.yml  -e @group_vars/my_vault.yml --ask-vault-pass
 
+  159  ansible-vaultrekey   group_vars/my_vault.yml
+  160  ansible-vault rekey   group_vars/my_vault.yml
+  161  openssl rand -base64 2048  
+  162  openssl rand -base64 2048  > pass_file/ansible-vault.pass
+  163  cat pass_file/ansible-vault.pass
+  164  ansible-vault create   group_vars/my_vault_base64.yml --vault-password-file=pass_file/ansible-vault.pass
+  165  ansible-vault view   group_vars/my_vault_base64.yml --vault-password-file=pass_file/ansible-vault.pass
+  166  ansible-playbook -i ../inventory.ini vault.yml  -e @group_vars/my_vault.yml --vault-password-file=pass_file/ansible-vault.pass
+  167  ansible-playbook -i ../inventory.ini vault.yml  -e @group_vars/my_vault_base64.yml --vault-password-file=pass_file/ansible-vault.pass
+  168  history
