@@ -66,4 +66,16 @@ ansible -i inventory.ini -m ping all
 
 
 
+    uvicorn app:app
+    ansible-playbook -i inventory.ini playbook4.yml 
+    ansible-playbook -i ../inventory.ini vault.yml 
+
+    ansible-vault create group_vars/my_vault.yml
+    ansible-vault view  group_vars/my_vault.yml
+    ansible-playbook -i ../inventory.ini vault.yml 
+    ansible-playbook -i ../inventory.ini vault.yml  -e @group_vars/my_vault.tml --ask-vault--pass
+    ansible-playbook -i ../inventory.ini vault.yml  -e @group_vars/my_vault.tml --ask--vault--pass
+    ansible-playbook -i ../inventory.ini vault.yml  -e @group_vars/my_vault.tml --ask-vault-pass
+    
+    ansible-playbook -i ../inventory.ini vault.yml  -e @group_vars/my_vault.yml --ask-vault-pass
 
