@@ -61,6 +61,8 @@ create  playbook.yml ---> refer file in git
  ansible-playbook -i inventory.ini playbook4.yml
 
 
+ansible -i inventory.ini -m ping all 
+
 
 
 
